@@ -7,7 +7,7 @@ function Hero() {
       {/* Background Hero */}
       <motion.div
         className="bg-cover bg-center h-[80vh] flex items-center justify-center text-white"
-        style={{ backgroundImage: "url('../assets/dishes/bg/bg(1).jpg')" }}
+        style={{ backgroundImage: "url(/bg.jpg)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
