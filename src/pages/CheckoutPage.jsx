@@ -12,6 +12,33 @@ const CheckoutPage = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <h2 className="text-2xl font-bold mb-6">Checkout</h2>
+
+      {cart.length === 0 ? (
+        <p className="text-gray-600 mb-6">Your cart is empty.</p>
+      ) : (
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-2">Your Order:</h3>
+          <ul className="bg-gray-100 p-4 rounded">
+            {cart.map((item) => (
+              <li key={item.id} className="flex justify-between mb-2">
+                <span>{item.name}</span>
+                <span>${item.price.toFixed(2)}</span>
+              </li>
+            ))}
+            <hr className="my-2" />
+            <li className="flex justify-between font-bold">
+              <span>Total</span>
+              <span>
+                $
+                {cart
+                  .reduce((total, item) => total + item.price, 0)
+                  .toFixed(2)}
+              </span>
+            </li>
+          </ul>
+        </div>
+      )}
+
       <form onSubmit={handleCheckout} className="space-y-4">
         <input
           type="text"
