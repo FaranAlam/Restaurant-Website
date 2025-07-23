@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // ✅ Removed useNavigate (was unused)
 import { useCart } from "../context/CartContext";
 
 const dishes = [
@@ -27,13 +27,12 @@ const dishes = [
 ];
 
 const FeaturedDishes = () => {
-  const { addToCart } = useCart(); // ✅ Keep this only once
-  const navigate = useNavigate();
+  const { addToCart } = useCart(); // ✅ Used properly
 
   const handleAddToCart = (dish) => {
     addToCart(dish);
-    console.log("Added to cart:", dish); // ✅ Optional debug
-    // Optional: navigate("/checkout");
+    console.log("Added to cart:", dish); // Optional
+    // Optional: toast or redirect logic
   };
 
   return (
@@ -74,7 +73,6 @@ const FeaturedDishes = () => {
               >
                 Add to Cart
               </button>
-
             </motion.div>
           ))}
         </div>
